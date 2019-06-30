@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by codedrinker on 04/05/2018.
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
 public abstract class AbstractDispatcher {
     protected WebDriver driver;

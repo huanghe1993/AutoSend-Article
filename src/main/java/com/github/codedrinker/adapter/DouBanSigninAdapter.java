@@ -9,12 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * github授权登录
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
-public class GithubSigninAdapter {
+public class DouBanSigninAdapter {
     private WebDriver driver;
 
-    public GithubSigninAdapter(WebDriver driver) {
+    public DouBanSigninAdapter(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -26,9 +28,9 @@ public class GithubSigninAdapter {
             }
         }
         WebElement usernameInput = new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("login_field")));
-        usernameInput.sendKeys(Loader.load().getGithubUsername());
-        driver.findElement(By.id("password")).sendKeys(Loader.load().getGithubPassword());
-        driver.findElement(By.name("commit")).click();
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("inp-alias")));
+        usernameInput.sendKeys(Loader.load().getJianshuUsername());
+        driver.findElement(By.id("inp-pwd")).sendKeys(Loader.load().getJianshuPassword());
+        driver.findElement(By.name("confirm")).click();
     }
 }

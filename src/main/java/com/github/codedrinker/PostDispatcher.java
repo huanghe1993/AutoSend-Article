@@ -14,15 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by codedrinker on 17/02/2018.
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
 public class PostDispatcher {
 
     private List<AbstractDispatcher> getDispatchers(WebDriver driver) {
         List<AbstractDispatcher> dispatchers = new ArrayList<>();
-        dispatchers.add(new SegmentFaultDispatcher(driver));
+        //dispatchers.add(new SegmentFaultDispatcher(driver));
         dispatchers.add(new JianshuDispatcher(driver));
-        dispatchers.add(new CSDNMarkdownDispatcher(driver));
+        //dispatchers.add(new CSDNMarkdownDispatcher(driver));
         return dispatchers;
     }
 

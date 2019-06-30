@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class DispatcherWebdriver {
 
     public static WebDriver getDriver() {
-        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/driver/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "C:\\driver\\geckodriver.exe");
         FirefoxProfile firefoxProfile = new FirefoxProfile();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         firefoxProfile.setPreference("dom.webnotifications.enabled", false);

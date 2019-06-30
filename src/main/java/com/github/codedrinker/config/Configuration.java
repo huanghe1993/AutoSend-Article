@@ -3,7 +3,9 @@ package com.github.codedrinker.config;
 import lombok.Data;
 
 /**
- * Created by codedrinker on 02/08/2017.
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
 @Data
 public class Configuration {

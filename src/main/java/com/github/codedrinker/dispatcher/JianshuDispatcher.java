@@ -1,5 +1,6 @@
 package com.github.codedrinker.dispatcher;
 
+import com.github.codedrinker.adapter.DouBanSigninAdapter;
 import com.github.codedrinker.entity.DispatchMarkdown;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by codedrinker on 04/05/2018.
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
 public class JianshuDispatcher extends AbstractDispatcher {
 
@@ -22,25 +25,30 @@ public class JianshuDispatcher extends AbstractDispatcher {
     }
 
     private void publishPost(DispatchMarkdown dispatchMarkdown) {
-        new WebDriverWait(driver, 60)
-                .until(ExpectedConditions.titleContains("写文章"));
-        findElementUntil(By.className("fa-plus-circle")).click();
         findElementUntil(By.className("_24i7u")).sendKeys(dispatchMarkdown.getTitle());
         findElementUntil(By.id("arthur-editor")).sendKeys(dispatchMarkdown.getContent());
-        findElementUntil(By.className("fa-mail-forward")).click();
+        findElementUntil(By.className("tGbI7")).click();
     }
 
+    /**
+     * 跳转到写文章的页面
+     */
     private void directToPostPage() {
-        new WebDriverWait(driver, 300)
-                .until(ExpectedConditions.titleContains("简书 - 创作你的创作"));
         driver.get("https://www.jianshu.com/writer#");
+        //选择发表文章的类型
+        findElementUntil(By.className("fa-plus-circle")).click();
     }
 
+    /**
+     * 简书的登录，使用的是豆瓣第三方登录授权功能
+     */
     @Override
     void login() {
         getDriver().get("https://www.jianshu.com/sign_in");
-        getDriver().findElement(By.id("session_email_or_mobile_number")).sendKeys(getConfiguration().getJianshuUsername());
-        getDriver().findElement(By.id("session_password")).sendKeys(getConfiguration().getJianshuPassword());
-        getDriver().findElement(By.id("sign-in-form-submit-btn")).click();
+        getDriver().findElement(By.className("ic-more")).click();
+        getDriver().findElement(By.className("ic-douban")).click();
+        new DouBanSigninAdapter(driver).signin();
+
+
     }
 }

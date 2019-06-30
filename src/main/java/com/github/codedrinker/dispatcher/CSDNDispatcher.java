@@ -11,7 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by codedrinker on 04/05/2018.
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
 public class CSDNDispatcher extends AbstractDispatcher {
 
@@ -61,8 +63,9 @@ public class CSDNDispatcher extends AbstractDispatcher {
     @Override
     void login() {
         getDriver().get("https://passport.csdn.net/account/login");
-        WebElement githubSigninLink = new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("githubAuthorizationUrl")));
+//        WebElement githubSigninLink = new WebDriverWait(driver, 20)
+//                .until(ExpectedConditions.presenceOfElementLocated(By.className("icon-github")));
+        WebElement githubSigninLink =getDriver().findElement(By.className("icon-github"));
         githubSigninLink.click();
         new GithubSigninAdapter(driver).signin();
     }

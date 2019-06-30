@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 /**
- * Created by codedrinker on 04/05/2018.
+ * @Author huanghe
+ * @Date 2019/6/30 9:50
+ * @Description
  */
 public class CSDNMarkdownDispatcher extends AbstractDispatcher {
 
@@ -25,37 +27,35 @@ public class CSDNMarkdownDispatcher extends AbstractDispatcher {
     }
 
     private void publishPost(DispatchMarkdown dispatchMarkdown) {
-        untilTitleLocated("markdown");
-        findElementUntil(By.className("input-file-title")).sendKeys(dispatchMarkdown.getTitle());
-
-        driver.findElement(By.className("editor-content")).clear();
+        String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+        findElementUntil(By.className("article-bar__title--input")).sendKeys(del + dispatchMarkdown.getTitle());
+        driver.findElement(By.className("editor__inner")).clear();
         String[] lines = StringUtils.split(dispatchMarkdown.getContent(),"\n");
         for (String line : lines) {
-            driver.findElement(By.className("editor-content")).sendKeys(line);
-            driver.findElement(By.className("editor-content")).sendKeys(Keys.ENTER);
-            driver.findElement(By.className("editor-content")).sendKeys(Keys.ENTER);
+            driver.findElement(By.className("editor__inner")).sendKeys(line);
+            driver.findElement(By.className("editor__inner")).sendKeys(Keys.ENTER);
+            driver.findElement(By.className("editor__inner")).sendKeys(Keys.ENTER);
         }
-
-        findElementUntil(By.className("btn-blog-publish")).click();
-
-        findElementUntil(By.id("tags-con-blog")).findElement(By.tagName("input")).sendKeys(dispatchMarkdown.getTags());
-        findElementUntil(By.id("csdn-tags-blog-button")).click();
-        Select selType = new Select(findElementUntil(By.id("input-blog-type")));
-        selType.selectByIndex(1);
-        Select radChl = new Select(findElementUntil(By.id("input-blog-channel")));
-        radChl.selectByIndex(12);
-        findElementUntil(By.id("csdn-post-blog-button")).click();
+        findElementUntil(By.className("btn-publish")).click();
+        Select selType = new Select(findElementUntil(By.xpath("//select[1]")));
+        selType.selectByValue("original");
+        Select radChl = new Select(findElementUntil(By.xpath("/html/body/div[1]/div[2]/div/div/div[1]/div[3]/div[2]/div/select")));
+        radChl.selectByIndex(6);
+        findElementUntil(By.className("btn-c-blue")).click();
     }
 
     private void directToPostPage() {
-        untilTitleLocated("CSDN");
         driver.get("http://write.blog.csdn.net/mdeditor");
+        // 点击开始创作按钮
+        findElementUntil(By.id("btnStart")).click();
+        // 点击MarkDown编辑器
+        findElementUntil(By.linkText("Markdown编辑器")).click();
     }
 
     @Override
     void login() {
         getDriver().get("https://passport.csdn.net/account/login");
-        WebElement githubSigninLink = findElementUntil(By.id("githubAuthorizationUrl"));
+        WebElement githubSigninLink = findElementUntil(By.className("icon-github"));
         githubSigninLink.click();
         new GithubSigninAdapter(driver).signin();
     }
