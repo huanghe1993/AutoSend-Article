@@ -11,10 +11,16 @@
 ## 使用说明
 
 ### 环境准备
+当selenium升级到3.0之后，对不同的浏览器驱动进行了规范。如果想使用selenium驱动不同的浏览器，必须单独下载并设置不同的浏览器驱动。
+
 - JDK 1.8 
 - Idea(安装Lombok) 
 - Firefox
+- 配置浏览器驱动
 
+Firefox浏览器驱动：[geckodriver](https://github.com/mozilla/geckodriver/releases)
+
+Chrome浏览器驱动：[chromedriver](https://sites.google.com/a/chromium.org/chromedriver/home) 
 ### 克隆代码
 ```bash
 git clone https://github.com/codedrinker/post-dispatcher.git
@@ -33,11 +39,10 @@ git clone https://github.com/codedrinker/post-dispatcher.git
 ## 支持平台
 - SegmentFault：用户名密码登录
 - CSDN：Github 登录
-- 简书：用户名密码登录，需要功能介入点击图像验证码。
+- 简书：豆瓣登录。
 
-## 反馈
-使用过程中需要问题，欢迎反馈到如下地址  
+## 参考
 https://github.com/codedrinker/post-dispatcher/issues
 
-## 作者
+
 
