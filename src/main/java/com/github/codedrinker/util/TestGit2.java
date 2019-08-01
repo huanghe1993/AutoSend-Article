@@ -6,4 +6,8 @@ package com.github.codedrinker.util;
  * @Description
  */
 public class TestGit2 {
+
+    public static void main(String[] args) {
+
+    }
 }
