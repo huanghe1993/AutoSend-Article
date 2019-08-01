@@ -10,4 +10,8 @@ public class Git2version {
     public static void main(String[] args) {
         System.out.println("version 2.0");
     }
+
+    public void say(){
+        System.out.println("继续2.0的开发！");
+    }
 }
