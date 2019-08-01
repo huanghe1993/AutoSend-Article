@@ -14,4 +14,8 @@ public class Git2version {
     public void say(){
         System.out.println("继续2.0的开发！");
     }
+
+    public void do1 (){
+        System.out.println("2.0完成了新的功能！");
+    }
 }
