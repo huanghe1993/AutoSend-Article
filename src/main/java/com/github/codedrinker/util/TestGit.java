@@ -9,5 +9,6 @@ public class TestGit {
 
     public static void main(String[] args) {
         System.out.println("version1.0  新功能");
+        System.out.println("1.0 继续开发");
     }
 }
