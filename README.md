@@ -75,5 +75,8 @@ git clone https://github.com/huanghe1993/AutoSend-Article.git
 原作者不支持掘金的平台发送，并且简书和CSDN上的代码都无法使用了
 https://github.com/codedrinker/post-dispatcher/issues
 
+## 问题
+现在掘金平台还没有完成，正在完善。。。。
+
 
 
