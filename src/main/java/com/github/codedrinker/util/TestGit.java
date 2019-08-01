@@ -6,4 +6,8 @@ package com.github.codedrinker.util;
  * @Description
  */
 public class TestGit {
+
+    public static void main(String[] args) {
+        System.out.println("version1.0  新功能");
+    }
 }
